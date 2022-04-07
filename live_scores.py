@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import json
 
 class User:
   def __init__(self, n, one, two, three, ts):
