@@ -17,15 +17,15 @@ class Player:
     self.thru = t
 
 users = []
-users.append(User("Paul","Scottie Scheffler","Sam Burns","Tommy Fleetwood","Harold Varner",0))
+users.append(User("Paul","Scottie Scheffler","Sam Burns","Tommy Fleetwood","Harold Varner III",0))
 users.append(User("Matt","Rory McIlroy","Hideki Matsuyama","Billy Horschel","Justin Rose",0))
 users.append(User("Bill","Cameron Smith","Viktor Hovland","Max Homa","Keegan Bradley",0))
 users.append(User("Beeb","Brooks Koepka","Dustin Johnson","Alex Noren","Cameron Young",0))
 users.append(User("Ramsey","Justin Thomas","Shane Lowry","Talor Gooch","Brian Harman",0))
 users.append(User("Tyler","Jon Rahm","Tony Finau","Daniel Berger","Patrick Reed",0))
-users.append(User("Christian","Xander Schauffele","Sungjae Im","Abraham Ancer","Tyrell Hatton",0))
+users.append(User("Christian","Xander Schauffele","Sungjae Im","Joel Dahmen","Tyrrell Hatton",0))
 users.append(User("JJ","Jordan Spieth","Patrick Cantlay","Corey Conners","Davis Riley",0))
-users.append(User("Quinn","Matt Fitzpatrick","Collin Morikawa","Harris English","Garrick Higgo",0))
+users.append(User("Quinn","Matt Fitzpatrick","Collin Morikawa","Harris English","Si Woo Kim",0))
 users.append(User("Jovon","Will Zalatoris","Joaquin Niemann","Aaron Wise","Mito Pereira",0))
 
 def get_players(soup, player_col, score_col, thru_col, round_one_col):
@@ -33,7 +33,7 @@ def get_players(soup, player_col, score_col, thru_col, round_one_col):
     players = []
     for row in rows[0:]:
         cols = row.find_all("td")
-        # If we get a bad row. For example, during the tournament we there 
+        # If we get a bad row. For example, during the tournament there 
         # is a place holder row that represents the cut line
         if len(cols) < 5:
             continue
