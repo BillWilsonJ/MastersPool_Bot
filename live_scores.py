@@ -16,17 +16,24 @@ class Player:
     self.score = s
     self.thru = t
 
+COURSE_PAR = 72
+TOURNAMENT_CUT = 144
+
 users = []
-users.append(User("Paul","Scottie Scheffler","Sam Burns","Tommy Fleetwood","Harold Varner III",0))
-users.append(User("Matt","Rory McIlroy","Hideki Matsuyama","Billy Horschel","Justin Rose",0))
-users.append(User("Bill","Cameron Smith","Viktor Hovland","Max Homa","Keegan Bradley",0))
-users.append(User("Beeb","Brooks Koepka","Dustin Johnson","Alex Noren","Cameron Young",0))
-users.append(User("Ramsey","Justin Thomas","Shane Lowry","Talor Gooch","Brian Harman",0))
-users.append(User("Tyler","Jon Rahm","Tony Finau","Daniel Berger","Patrick Reed",0))
-users.append(User("Christian","Xander Schauffele","Sungjae Im","Joel Dahmen","Tyrrell Hatton",0))
-users.append(User("JJ","Jordan Spieth","Patrick Cantlay","Corey Conners","Davis Riley",0))
-users.append(User("Quinn","Matt Fitzpatrick","Collin Morikawa","Harris English","Si Woo Kim",0))
-users.append(User("Jovon","Will Zalatoris","Joaquin Niemann","Aaron Wise","Mito Pereira",0))
+users.append(User("Liam","Justin Thomas","Tiger Woods","Joaquin Niemann","Louis Oosthuizen",0))
+users.append(User("Matt","Scottie Scheffler","Shane Lowry","Justin Rose","Russell Henley",0))
+users.append(User("Bill","Rory McIlroy","Tyrrell Hatton","Corey Conners","Danny Willett",0))
+users.append(User("JJ","Jon Rahm","Tom Kim","So-Woo Kim","Adam Scott",0))
+users.append(User("Mary Jane","Will Zalatoris","Taylor Gooch","Abraham Ancer","Bubba Watson",0))
+users.append(User("Jovon","Collin Morikawa","Mito Pereira","Kevin Kisner","Sam Bennett",0))
+users.append(User("Tyler","Jordan Spieth","Matt Fitzpatrick","Min Woo Lee","Patrick Reed",0))
+users.append(User("Ria","Xander Schauffele","Sahith Theegala","Bryson DeChambeau","Keegan Bradley",0))
+users.append(User("Christian","Hideki Matsuyama","Sung Jae Im","Brian Harman","Zach Johnson",0))
+users.append(User("Paul","Patrick Cantlay","Sam Burns","Sepp Straka","Kyoung-Hoon Lee",0))
+users.append(User("Ryan","Max Homa","Brooks Koepka","Tommy Fleetwood","Thomas Pieters",0))
+users.append(User("Kyle","Cameron Smith","Cameron Young","Cameron Champ","Billy Horschel",0))
+users.append(User("Beeb","Dustin Johnson","Jason Day","Keith Mitchell","Kurt Kitiyama",0))
+users.append(User("Quinn","Tony Finau","Viktor Hovland","Russell Henley","Aaron Wise",0))
 
 def get_players(soup, player_col, score_col, thru_col, round_one_col):
     rows = soup.find_all("tr", class_="PlayerRow__Overview PlayerRow__Overview--expandable Table__TR Table__even")
@@ -48,8 +55,8 @@ def get_players(soup, player_col, score_col, thru_col, round_one_col):
                 round_score = cols[round_one_col + x].text.strip()
                 total_score = total_score + int(round_score)
                 if (cols[round_one_col + x + 1].text.strip()) == "--":
-                    score_final = total_score - 70 * (x+1)
-                    score_final = score_final + (total_score - 144) * 2
+                    score_final = total_score - COURSE_PAR * (x+1)
+                    score_final = score_final + (total_score - TOURNAMENT_CUT) * 2
                     score_found = True
                 x = x + 1
         elif score == 'WD':
@@ -58,7 +65,7 @@ def get_players(soup, player_col, score_col, thru_col, round_one_col):
                 if round_score != "--":
                     total_score = total_score + int(round_score)
                     if (cols[round_one_col + x + 1].text.strip()) == "--":
-                        score_final = total_score - 70 * (x+1)
+                        score_final = total_score - COURSE_PAR * (x+1)
                         score_found = True
                     x = x + 1
                 else:
@@ -69,7 +76,7 @@ def get_players(soup, player_col, score_col, thru_col, round_one_col):
                 round_score = cols[round_one_col + x].text.strip()
                 total_score = total_score + int(round_score)
                 if (cols[round_one_col + x + 1].text.strip()) == "--":
-                    score_final = total_score - 70 * (x+1)
+                    score_final = total_score - COURSE_PAR * (x+1)
                     score_found = True
                 x = x + 1
         elif score == 'E':
