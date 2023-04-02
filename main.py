@@ -76,14 +76,15 @@ async def on_message(message):
 
     if message.channel.name == "golf-majors-pool" or message.channel.name == "bot-test":
         if message.content.startswith("!"):
-            if message.content.startswith("!Leaderboard"):
+            if message.content.startswith("!Leaderboard") or message.content.startswith("!leaderboard") or message.content.startswith("!lb"):
                 leaderboard_output = ""
                 leaderboard_output = live_scores.get_leaderboard()
                 await message.channel.send(leaderboard_output)
             elif message.content.startswith("!Tiger"):
-                await message.channel.send("Not this time bucko")
+                await message.channel.send("get lost loser")
             else:
                 name = message.content.replace('!','')
+                name = name.lower()
                 score_output = live_scores.users_scores(name)
                 await message.channel.send(score_output)
 
