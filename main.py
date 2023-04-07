@@ -25,7 +25,8 @@ class ServerUser:
 
 # !Stat Bot
 
-client = discord.Client()
+intents = discord.Intents().all()
+client = discord.Client(intents=intents)
 
 # Stat Bot
 
@@ -74,7 +75,7 @@ async def on_message(message):
     if message.content.startswith("Test"):
         await message.channel.send("Message sent in " + message.channel.name + " channel")
 
-    if message.channel.name == "golf-majors-pool" or message.channel.name == "bot-test":
+    if message.channel.name == "golf-major-pools" or message.channel.name == "bot-test":
         if message.content.startswith("!"):
             if message.content.startswith("!Leaderboard") or message.content.startswith("!leaderboard") or message.content.startswith("!lb"):
                 leaderboard_output = ""
@@ -84,7 +85,6 @@ async def on_message(message):
                 await message.channel.send("get lost loser")
             else:
                 name = message.content.replace('!','')
-                name = name.lower()
                 score_output = live_scores.users_scores(name)
                 await message.channel.send(score_output)
 
