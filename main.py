@@ -23,6 +23,15 @@ class ServerUser:
     def addChannel(self,channel_name):
         self.channels.append(channel_name)
 
+class ChannelInformation:
+
+    def __init__(self, n):
+        self.name = n
+        self.num_of_messages = 1
+
+    def incrementMessageCount(self):
+        self.num_of_messages = self.num_of_messages + 1
+
 # !Stat Bot
 
 intents = discord.Intents().all()
@@ -32,6 +41,7 @@ client = discord.Client(intents=intents)
 
 serverUsers = []
 serverusersNames = []
+channelInformations = []
 
 # !Stat Bot
 
@@ -45,11 +55,12 @@ async def on_ready():
     print(f'{guild.name}(id: {guild.id})')
 
 # Stat Bot 
-""""
+"""""
     for server in client.guilds:
         for channel in server.channels:
             if str(channel.type) == 'text':
                 print(channel.name)
+                channelInformations.append(ChannelInformation(channel.name))
                 async for msg in channel.history(limit=100000):
                     if str(msg.author.name) in serverusersNames:
                         serverusersNames.append(msg.author.name)
@@ -60,11 +71,18 @@ async def on_ready():
                         serverUsers.append(ServerUser(msg.author.name))
                         serverusersNames.append(msg.author.name)
 
+                    for channelinfo in channelInformations:
+                        if str(channel.name) == channelinfo.name:
+                            channelinfo.incrementMessageCount()
+
     serverUsers.sort(key=lambda x: x.num_of_messages)
+    channelInformations.sort(key=lambda x: x.num_of_messages)
 
     for server_user in serverUsers:
         print(server_user.name + " has said " + str(server_user.num_of_messages) + " messages")
-"""
+    for channelinfo in channelInformations:
+        print(channelinfo.name + " has  " + str(server_user.num_of_messages) + " messages")
+"""""
 # !Stat Bot
 
 @client.event
