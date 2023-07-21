@@ -16,23 +16,23 @@ class Player:
     self.score = s
     self.thru = t
 
-COURSE_PAR = 70
-TOURNAMENT_CUT = 141
+COURSE_PAR = 71
+TOURNAMENT_CUT = 143
 
 users = []
-users.append(User("Quinn","Scottie Scheffler","Tommy Fleetwood","Wyndham Clark","Gary Woodland",0))
-users.append(User("Ryan","Brooks Koepka","Rickie Fowler","Corey Conners","Thomas Pieters",0))
-users.append(User("Jovon","Max Homa","Joaquin Niemann","Adam Scott","Joel Dahmen",0))
-users.append(User("Paul","Jon Rahm","Sam Burns","Phil Mickelson","Sepp Straka",0))
-users.append(User("Ramsey","Rory McIlroy","Bryson DeChambeau","Shane Lowry","Adrian Meronk",0))
-users.append(User("JJ","Xander Schauffele","Sahith Theegala","Si Woo Kim","Denny McCarthy",0))
-users.append(User("Christian","Justin Thomas","Cameron Young","Tom Kim","Billy Horschel",0))
-users.append(User("Tyler","Viktor Hovland","Cameron Smith","Patrick Reed","Mito Pereira",0))
-users.append(User("Kyle","Patrick Cantlay","Tony Finau","Keegan Bradley","Russell Henley",0))
-users.append(User("Bill","Collin Morikawa","Sungjae Im","Min Woo Lee","K.H. Lee",0))
-users.append(User("Dylan","Jordan Spieth","Jason Day","Kurt Kitayama","Cam Davis",0))
-users.append(User("Beeb","Dustin Johnson","Hideki Matsuyama","Adam Svensson","Sam Bennett",0))
-users.append(User("Matt","Matt Fitzpatrick","Tyrrell Hatton","Justin Rose","Justin Suh",0))
+users.append(User("Quinn","Rory McIlroy","Hideki Matsuyama","Robert MacIntyre","Branden Grace",0))
+users.append(User("Dylan","Scottie Scheffler","Wyndham Clark","Brian Harman","J.T. Poston",0))
+users.append(User("Bill","Jon Rahm","Sam Burns","Keegan Bradley","Billy Horschel",0))
+users.append(User("Beeb","Brooks Koepka","Talor Gooch","Jason Day","Thomas Pieters",0))
+users.append(User("Matt","Cameron Smith","Jordan Spieth","Cameron Young","Nicolai Højgaard",0))
+users.append(User("Ramsey","Xander Schauffele","Justin Rose","Patrick Reed","Harris English",0))
+users.append(User("Liam","Viktor Hovland","Shane Lowry","Corey Conners","Louis Oosthuizen",0))
+users.append(User("Tyler","Tyrrell Hatton","Patrick Cantlay","Denny McCarthy","Joaquin Niemann",0))
+users.append(User("Jovon","Collin Morikawa","Rickie Fowler","Min Woo Lee","Russell Henley",0))
+users.append(User("Paul","Justin Thomas","Bryson DeChambeau","Sepp Straka","Padraig Harrington",0))
+users.append(User("JJ","Tommy Fleetwood","Tony Finau","Sungjae Im","Ryan Fox",0))
+users.append(User("Christian","Matt Fitzpatrick","Tom Kim","Kurt Kitayama","Zach Johnson",0))
+users.append(User("Ryan","Dustin Johnson","Max Homa","Sahith Theegala","Si Woo Kim",0))
 
 def get_players(soup, player_col, score_col, thru_col, round_one_col):
     rows = soup.find_all("tr", class_="PlayerRow__Overview PlayerRow__Overview--expandable Table__TR Table__even")
